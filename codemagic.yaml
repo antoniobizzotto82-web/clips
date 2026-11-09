@@ -1,14 +1,20 @@
 workflows:
-  gbm-servicios-android:
-    name: GBM SERVICIOS Android APK
-    max_build_duration: 120
-    instance_type: mac_mini_m2
+  android-workflow:
+    name: Android Workflow
+    instance_type: linux
+    working_directory: GBM_SERVICIOS
     environment:
-      flutter: stable
+      vars:
+        PACKAGE_NAME: "com.tuempresa.clips"
     scripts:
+      - name: Set up local.properties
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
       - name: Get Flutter packages
-        script: flutter pub get
+        script: |
+          flutter pub get
       - name: Build Android APK
-        script: flutter build apk --release
+        script: |
+          flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/*.apk
