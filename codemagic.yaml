@@ -1,4 +1,4 @@
-workflows:
+workflow:
   android-workflow:
     name: Android Workflow
     instance_type: linux
