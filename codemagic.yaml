@@ -1,7 +1,7 @@
-workflow:
-  android-workflow:
-    name: Android Workflow
-    instance_type: linux
+workflows:
+  gbm-servicios-android:
+    name: GBM Servicios Android Workflow (Mac M2)
+    instance_type: mac_mini_m2
     working_directory: GBM_SERVICIOS
     environment:
       vars:
@@ -17,4 +17,4 @@ workflow:
         script: |
           flutter build apk --release
     artifacts:
-      - build/app/outputs/flutter-apk/*.apk
+      - GBM_SERVICIOS/build/app/outputs/flutter-apk/*.apk
